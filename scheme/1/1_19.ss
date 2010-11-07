@@ -28,5 +28,8 @@
                         q
                         (- count 1)))))
 
-(d "fib" (map fib1 (cl 1 10) ))
-(d "fib" (map fib (cl 1 10) ))
+(d "fib_log"  (map fib (cl 1 10) ))
+(d "fib_simple"  (map fib1 (cl 1 10) ))
+
+(time_test_b "fibonacci 100000 log time" (lambda() (fib 100000)))
+(time_test_b "fibonacci 100000 simple time" (lambda() (fib1 100000)))

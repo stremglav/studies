@@ -3,6 +3,7 @@
 (load "utils.ss")
 
 (define (paskal n)
+(
     (define (cr_data data)
         ( map (lambda(a b) (+ a b)) (list-tail data 1)
                                     (list-head data (- (length data) 1))))

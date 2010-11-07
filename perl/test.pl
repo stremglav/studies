@@ -8,4 +8,5 @@ print "\n";
 
 my $x=0;
 (1)?$x=1:$x=2;
+print "fffffffffffffff";
 print $x."\n";

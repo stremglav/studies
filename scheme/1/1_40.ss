@@ -36,5 +36,5 @@
 (define (t_cubic) (newtons-method (cubic 0 0 -8) 1))
 (define (t_cubic2) (newtons-method (cubic2 0 0 -8) 1))
 
-(time_test t_cubic)
 (time_test t_cubic2)
+(time_test t_cubic)

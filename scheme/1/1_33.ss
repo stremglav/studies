@@ -2,16 +2,16 @@
 !#
 (load "utils.ss")
 
-(define (rfiltered-accumulate combiner null-value term a next b pred)
+(define (filtered-accumulate_r combiner null-value term a next b pred)
     (if (> a b)
         null-value
         (if(pred a)
             (combiner (term a)
-                  (rfiltered-accumulate combiner null-value term (next a) next b pred))
-            (rfiltered-accumulate combiner null-value term (next a) next b pred))))
+                      (filtered-accumulate_r combiner null-value term (next a) next b pred))
+            (filtered-accumulate_r combiner null-value term (next a) next b pred))))
 
 (define (sum term a next b pred)
-    (rfiltered-accumulate + 0 term a next b pred))
+    (filtered-accumulate_r + 0 term a next b pred))
 
 (define (sqrmod x m)
   (let ((y (remainder (square x) m)))
@@ -34,11 +34,12 @@
   (cond ((= times 0) #t)
         ((miller-rabin-test n) (fast-prime? n (- times 1)))
         (else #f)))
+
 (define (prime? x) (fast-prime? x (- x 1)))
 
 (define (sum_sq_simple1 a b)
     (define (inc x) (+ x 1))
-    (rfiltered-accumulate + 0 square a inc b prime?))
+    (filtered-accumulate_r + 0 square a inc b prime?))
 
 (define (sum_sq_simple a b)
     (sum square a 1+ b prime?))
@@ -51,17 +52,13 @@
 (define (mega-sum n)
     (define (pred x) (= (gcd x n) 1))
     (define (id x) x)
-    (rfiltered-accumulate * 1 id 1 1+ n pred ))
+    (filtered-accumulate_r * 1 id 1 1+ n pred ))
 
-
-
-(define (t_fac) (fast-prime? 1009 1000 ))
 (define (t_sum) (sum_sq_simple 1 10))
 (define (t_sum1) (sum_sq_simple1 1 10))
 (define (t_gcd) (gcd 206 40))
 (define (t_mega-sum) (mega-sum 10))
 
-(time_test t_fac)
 (time_test t_sum)
 (time_test t_sum1)
 (time_test t_gcd)

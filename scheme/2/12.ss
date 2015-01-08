@@ -48,14 +48,22 @@
 (ds (make-center-percent 400 3))
 (ds (percent (make-center-percent 400 3)))
 
-
-(ds (percent 
+(d "percent1 = 0.1 percent2 = 0.2 total percent" (percent 
         (mul-interval (make-center-percent 400 0.1) 
                       (make-center-percent 350 0.2))))
 
+(d "percent1 = 0.3 percent2 = 0.4 total percent" (percent 
+        (mul-interval (make-center-percent 500 0.3) 
+                      (make-center-percent 650 0.4))))
 
-(ds (percent 
-        (mul-interval (make-center-percent 500 0.1) 
-                      (make-center-percent 650 0.2))))
+(d "percent1 = 3 percent2 = 4 total percent" (percent 
+        (mul-interval (make-center-percent 500 3.0) 
+                      (make-center-percent 650 4))))
 
+(d "percent1 = 10 percent2 = 5 total percent" (percent 
+        (mul-interval (make-center-percent 500 10.0) 
+                      (make-center-percent 650 5))))
 
+(d "percent1 = 50 percent2 = 60 total percent" (percent 
+        (mul-interval (make-center-percent 500 60.0) 
+                      (make-center-percent 650 50))))

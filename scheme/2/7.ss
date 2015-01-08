@@ -29,3 +29,23 @@
       (mul-interval x
                     (make-interval (/ 1.0 (upper-bound y))
                                    (/ 1.0 (lower-bound y))))))
+
+(define (R i)
+    (/ (- (upper-bound i) (lower-bound i))
+       2))
+
+(define i1 (make-interval 4 3))
+(define i2 (make-interval 6 5))
+(define i3 (make-interval 8 7))
+(define i4 (make-interval 10 9))
+
+(d "R (3 4)" (R i1))
+(d "R (5 6)" (R i2))
+(d "R (7 8)" (R i3))
+(d "R (9 10)" (R i4))
+
+(d "R (mul (3 4) (5 6))" (R (mul-interval i1 i2)))
+(d "R (div (3 4) (5 6))" (R (div-interval i1 i2)))
+
+(d "R (mul (7 8) (9 10))" (R (mul-interval i3 i4)))
+(d "R (div (7 8) (9 10))" (R (div-interval i3 i4)))

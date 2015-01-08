@@ -16,6 +16,7 @@
       (eq? a b)))
 
 (d "equal2? 1 1" (equal2? 1 1))
+(d "equal2? '1 1" (equal2? '1 1))
 (d "equal2? 1 2" (equal2? 1 2))
 (d "equal2? '(1) '(1)" (equal2? '(1) '(1)))
 (d "equal2? '(2) '(1)" (equal2? '(2) '(1)))

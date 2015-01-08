@@ -28,12 +28,34 @@
     (map (lambda(x) (matrix-*-vector cols x)) m)))
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (define test '((1 2 3) (4 5 6) (7 8 9) (10 11 12)))
 (define A '((2 3) (5 7)))
 (define B '((-1 2) (-2 3)))
 (define v (list 1 2 3))
 (define w (list 4 5 6))
-(d "dot-product" (dot-product v w))
+;(d "dot-product" (dot-product v w))
 (d "matrix-*-vector" (matrix-*-vector test v))
 (d "transpose" (transpose test))
 (d "matrix-*-matrix" (matrix-*-matrix A B))

@@ -17,13 +17,24 @@
         answer
         (iter (cdr things)
               (cons answer
-                    (list (square (car things)))))))
+                      (list (square (car things)))))))
+  (iter items nil))
+
+(define (square-list3 items)
+  (define (iter things answer)
+    (if (null? things)
+        answer
+        (iter (cdr things)
+              (append answer
+                      (list (square (car things)))))))
   (iter items nil))
 
 
-(ds (square-list1 (list 1 2 3 4)))
-(ds (square-list2 (list 1 2 3 4)))
+(d "square-list1 (list 1 2 3 4)" (square-list1 (list 1 2 3 4)))
+(d "square-list2 (list 1 2 3 4)" (square-list2 (list 1 2 3 4)))
+(d "square-list3 (list 1 2 3 4)" (square-list3 (list 1 2 3 4)))
 
-(ds (cons (list 1 2 3) 3))
-(ds (cons 3 (list 1 2 3)))
+(d "cons 1 2" (cons 1 2))
+(d "cons 1 (list 2)" (cons 1 (list 2)))
+(d "cons (list 1) 2" (cons (list 1) 2))
 

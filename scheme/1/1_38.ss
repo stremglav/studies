@@ -2,13 +2,6 @@
 !#
 (load "utils.ss")
 
-(define (rcont-frac n d k)
-    (define (iter a)     
-        (if(= a k)
-            1
-        (/ (n a) (+ (d a) (iter (1+ a))))))
-     (iter 1))
-
 (define (icont-frac n d k)
     (define (iter a acc)     
         (if(= a 0)
@@ -32,4 +25,4 @@
           1))
 
 (d "e" (e 100))
-(d "e" (e 10))
+(d "eiler" (eiler 16))

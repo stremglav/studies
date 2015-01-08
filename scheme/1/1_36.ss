@@ -17,12 +17,12 @@
 
 (define (equation)
   (fixed-point (lambda (x) (/ (log 1000) (log x)))
-               2.0))
+               2))
 
 
 (define (equation2)
   (fixed-point (lambda (x) (/ (+ (/ (log 1000) (log x)) x) 2))
-               2.0))
+               2))
 
 (equation)
 (equation2)

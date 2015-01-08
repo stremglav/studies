@@ -18,4 +18,4 @@
               (else #f)))
     (try-it (- n 1)))
 
-(d "fermat-test" (map fermat-test (list 561 1105 1729 2465 2821 6601 1009 1008 100003)))
+(d "fermat-test" (map fermat-test (list 561 1105 1729 2465 2821 6601)))

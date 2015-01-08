@@ -5,6 +5,5 @@
 (define (f g)
   (g 2))
 
-
-(f 2)
-(f f)
+(d "function '+ 1'" (f (lambda(x) (+ x 1))))
+(d "" (f f))

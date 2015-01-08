@@ -4,9 +4,9 @@
 
 (define (make-rat n d)
     (let ((g (gcd (abs n) (abs d))))
-         (cons (if (or(< n 0) (< d 0))
+         (cons (if (< (* n d) 0)
                     (* (abs (/ n g)) -1)
-                    (/ n g))
+                    (abs (/ n g)))
                 (abs(/ d g)))))
 
 (define (numer x) (car x))
@@ -30,5 +30,9 @@
   (= (* (numer x) (denom y))
      (* (numer y) (denom x))))
 
-(dr (mul-rat (make-rat 6 9) (make-rat 1 3)))
+(dr (mul-rat (make-rat -6 -9) (make-rat 1 3)))
+(dr (mul-rat (make-rat 6 -9) (make-rat -1 3)))
+(dr (mul-rat (make-rat -6 -9) (make-rat -1 3)))
+(dr (make-rat -6 9))
+(dr (make-rat 6 -9))
 (dr (make-rat -6 -9))

@@ -2,7 +2,6 @@
 !#
 (load "utils.ss")
 
-
 (define (product_r term a next b)
   (if (> a b)
       1
@@ -16,13 +15,16 @@
             (iter (next a) (* result (term a)))))
     (iter a 1))
 
-(define (fac n)
+(define (fac_i n)
     (define (inc i) (+ i 1))
     (define (elem x) x)
     (product_i elem 1 inc n))
+(define (fac_r n)
+    (define (inc i) (+ i 1))
+    (define (elem x) x)
+    (product_r elem 1 inc n))
 
-
-(define (pi_rec prec) 
+(define (pi prec) 
     (define (inc i) (+ i 1))
     (define (num n)
         (define (f k) 
@@ -37,8 +39,7 @@
                   (else (f (- k 1)))))
         (product_i f 0 inc n))
     (* 4.0 (/ (num prec) (den prec))))
-
-(define (pi_rec2 prec) 
+(define (pi2 prec) 
     (define (inc i) (+ i 1))
     (define (num k) 
         (cond ((= 0 k) 2) 
@@ -51,9 +52,7 @@
     (define (f x)
         (/ (num x) (den x)))
     (* 4.0 (product_i f 0 inc prec)))
-
-
-(define (pi_iter prec) 
+(define (pi3 prec) 
     (define (inc i) (+ i 1))
     (define (num k)
         (define (f n acc) 
@@ -71,41 +70,29 @@
         (/ (num x) (den x)))
     (* 4.0 (product_i f 1 inc prec)))
 
-
-(define (pi_sicp n)
-  (define (pi-term k)
-    (/ (* (- k 1) (+ k 1)) (square k)))
-  (define (pi-next k)
-    (+ k 2))
-  (* 4.0 (product_i pi-term 3 pi-next n)))
-
-(define (pi_sicp2 n)
-  (define (pi-term x)
-    (if (odd? x)
-        (/ (+ x 1) (+ x 2))
-        (/ (+ x 2) (+ x 1))))
-  (define (pi-next x) (+ x 1))
-  (* 4.0 (product_i pi-term 1 pi-next n)))
+;1 2 1 2 1 2
+;2 1 2 1 2 1
+(define (pi_good prec) 
+    (define (inc i) (+ i 1))
+    (define (f x)
+        (if (odd? x)
+            (/ (+ x 1) (+ x 2))
+            (/ (+ x 2) (+ x 1))))
+    (* 4.0 (product_i f 1 inc prec)))
 
 
-(define (pi_sicp3 n)
-  (define (sqr x) (* x x))
-  (define (fun n) (/ (+ 1 n) n))
-  (define (next n) (+ 2 n))
-  (define p (product_i fun 1 n next))
-  (* (/ 2.0 n) (sqr p)))
+(define (t_fac_r) (fac_r 500))
+(define (t_fac_i) (fac_i 500))
 
+(define (t_pi) (pi 2000))
+(define (t_pi2) (pi2 2000))
+(define (t_pi3) (pi3 2000))
+(define (t_pi_good) (pi_good 2000))
 
-(define (t_pi_rec) (pi_rec 1000))
-(define (t_pi_rec2) (pi_rec2 1000))
-(define (t_pi_iter) (pi_iter 1000))
-(define (t_pi_sicp) (pi_sicp 20000))
-(define (t_pi_sicp2) (pi_sicp2 20000))
-(define (t_pi_sicp3) (pi_sicp3 20000))
+(time_test_b "time for recursive factorial of 500" t_fac_r)
+(time_test_b "time for iterative factorial of 500" t_fac_i)
 
-(time_test t_pi_rec)
-(time_test t_pi_rec2)
-(time_test t_pi_iter)
-(time_test t_pi_sicp)
-(time_test t_pi_sicp2)
-(time_test t_pi_sicp2)
+(time_test_f "t_pi" t_pi)
+(time_test_f "t_pi2" t_pi2)
+(time_test_f "t_pi3" t_pi3)
+(time_test_f "t_pi_good" t_pi_good)

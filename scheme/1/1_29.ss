@@ -16,8 +16,6 @@
      dx))
 
 
-
-
 (define (simpson f a b n) 
     (define h (/ (- b a) n))
     (define (arg k) (+ a (* k h)))
@@ -29,5 +27,5 @@
     (* (sum fun 0 inc n) (/ h 3))
 )
 
-(d "integral: " (integral cube 0 1 0.01))
+(d "integral: " (integral cube 0 1 0.001))
 (d "simpson: " (simpson cube 0 1 100))

@@ -36,32 +36,23 @@
     )
 )
 
-(define (cube_r x)
-  (fixed-point (average-damp (lambda (y) (/ x (square y))))
+(define (pow_r x power count)
+  (fixed-point ((repeated average-damp count) (lambda (y) (/ x (npow y (1- power)))))
                1.0))
-
-(define (quadra_r x)
-  (fixed-point ( average-damp(average-damp (lambda (y) (/ x (cube y)))))
-               1.0))
-
-(define (penta_r x)
-  (fixed-point ( average-damp (average-damp(average-damp (lambda (y) (/ x (* y y y y))))))
-               1.0))
-
 
 (define (npow_r x n)
     (define (fun y) (/ x (npow y (1- n))))
     (define damp-count (floor (log2 n)))
-    (fixed-point ((repeated average-damp damp-count) fun)
+        (fixed-point 
+            ((repeated average-damp damp-count) fun)
                  1.0))
 
-(define (t_npow_r4) (npow_r 9 2))
-(define (t_npow_r8) (npow_r 8 3))
-(define (t_npow_r16) (npow_r 81 2))
-(define (t_npow_r32) (npow_r 81 4))
+(d "pow_r 4 2 1"     (pow_r 4 2 1))
+(d "pow_r 8 3 1"     (pow_r 8 3 1))
+(d "pow_r 16 4 2"   (pow_r 16 4 2))
+(d "pow_r 32 5 2"   (pow_r 32 5 2))
+(d "pow_r 64 6 2"   (pow_r 64 6 2))
+(d "pow_r 128 7 2" (pow_r 128 7 2))
+(d "pow_r 256 8 2" (pow_r 256 8 3))
 
-(time_test t_npow_r4)
-(time_test t_npow_r8)
-(time_test t_npow_r16)
-(time_test t_npow_r32)
-
+(d "Result:\n  npow_r 1024 10" (npow_r 1024 10))

@@ -49,6 +49,7 @@
              (writer res t)))
     (start (runtime)))
 
+
 (define (time fun)
     (define (start st)
         (fun)
@@ -114,6 +115,13 @@
 (define (cln n num)
     (map (lambda(x) num) (cl 1 n))
 )
+
+(define (foldr op initial sequence)
+    (if (null? sequence)
+        initial
+        (op (car sequence)
+            (foldr op initial (cdr sequence)))))
+
 
 ;***
 ; Other functions 

@@ -32,22 +32,7 @@
             (if (fast-prime? n 100)
               (tmp (+ n 1) (append acc (list n)))
               (tmp (+ n 1) acc))))
-    (tmp n (list))
-)
-
-(define (timed-prime-test n)
-  (newline)
-  (display n)
-  (start-prime-test n (runtime)))
-(define (start-prime-test n start-time)
-    (report-prime  (min_p_after n) (- (runtime) start-time)))
-(define (report-prime data elapsed-time)
-  (display " *** ")
-  (display data)
-  (display " *** ")
-  (display elapsed-time)
-  (display "\n"))
-
+    (tmp n (list)))
 
 (define (expmod1 base exp m)
   (cond ((= exp 0) 1)
@@ -79,7 +64,7 @@
         (else #f)))
 
 
-(timed-prime-test 10000000000)
-(timed-prime-test 100000000000)
-(timed-prime-test 1000000000000)
-(timed-prime-test 10000000000000)
+(time_test_f "3 first prime number after 10000000000" (lambda() (min_p_after 10000000000)))
+(time_test_f "3 first prime number after 10000000000" (lambda() (min_p_after 100000000000)))
+(time_test_f "3 first prime number after 10000000000" (lambda() (min_p_after 1000000000000)))
+(time_test_f "3 first prime number after 10000000000" (lambda() (min_p_after 10000000000000)))

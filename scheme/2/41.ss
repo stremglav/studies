@@ -64,8 +64,8 @@
   (filter (lambda (t) (= (foldr + 0 t) s))
           (unique_triples_my n)))
 
-(d "addition" (addition (cl 1 20) (cl 4 15)))
-(d "unique_triples" (unique_triples 5))
-(d "unique_triples_my" (unique_triples_my 3))
-(d "triples_with_sum" (triples_with_sum 18 7))
-(d "triples_with_sum_my" (triples_with_sum_my 18 7))
+;(d "addition" (addition (cl 1 20) (cl 4 15)))
+;(d "unique_triples" (unique_triples 5))
+(d "unique_triples_my" (unique_triples_my 4))
+;(d "triples_with_sum" (triples_with_sum 18 7))
+;(d "triples_with_sum_my" (triples_with_sum_my 18 7))

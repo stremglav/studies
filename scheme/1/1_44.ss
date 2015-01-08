@@ -24,16 +24,9 @@
 (define (nsmooth2 f n)
   ((repeated (lambda (g) (smooth g)) n) f))
 
-(define (nsmooth3 f n)
-  ((repeated smooth n) f))
-
 (d "smooth" ((smooth square) 2))
 
-(define (t_nsmooth) ((nsmooth square 2) 1.0))
-(define (t_nsmooth2) ((nsmooth2 square 2) 1.0))
-(define (t_nsmooth3) ((nsmooth3 square 2) 1.0))
-
-(time_test t_nsmooth)
-(time_test t_nsmooth2)
-(time_test t_nsmooth3)
-
+(d "nsmooth" ((nsmooth square 2) 2))
+(d "nsmooth_test" ((smooth square) ((smooth square) 2)))
+(d "nsmooth2" ((nsmooth2 square 2) 2))
+(d "nsmooth2_test" ((smooth (smooth square)) 2))

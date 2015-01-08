@@ -10,3 +10,7 @@ haskell
 ml
 scala
 algorithms
+
+*.log
+*.sass-cache
+node_modules

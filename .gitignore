@@ -11,6 +11,9 @@ ml
 scala
 algorithms
 
+*.jpeg
+*.jpg
+*.png
 *.log
 *.sass-cache
 node_modules

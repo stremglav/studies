@@ -1,0 +1,15 @@
+{
+  "name": "AngularData",
+  "version": "0.0.1",
+  "description": "An application for taking attendance at meetups. Part of my Data Driven Web Applications with Angular.js course at Lynda.com",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Vladimir Serov",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-util": "^3.0.2",
+    "gulp-webserver": "^0.9.0"
+  }
+}

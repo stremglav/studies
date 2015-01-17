@@ -1,0 +1,59 @@
+@import url('http://fonts.googleapis.com/css?family=Bree+Serif|Merriweather:400,300,700,900');
+
+body {
+  background: image-url('misc/colorbars.png') top center repeat-x, $paleyellow;
+  font-family: $font-body;
+  font-size: 1.2rem;
+  line-height: 160%;
+  padding-top: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-headings;
+  font-weight: normal;
+  color: $darkgray;
+  text-shadow: 1px 1px $paleyellow;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: $orange;
+  margin-bottom: 5px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 100%;
+  margin: 20px 0 10px 0;
+  color: $pink;
+}
+
+a {
+  text-decoration: underline;
+  color: $mediumgray;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+.small {
+  font-size: 1rem;
+  color: $blue;
+}
+
+
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    /* Fixes Opera/contenteditable bug:
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952 */
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
